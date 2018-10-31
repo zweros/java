@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>estore</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+<!--   拦截所有的请求设置编码格式 -->
+  <filter-mapping>
+    <filter-name>Encond</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>Encond</filter-name>
+    <filter-class>com.briup.web.filter.EncodingFilter</filter-class>
+  </filter>
+<!--   拦截所有需要登录过后才能访问的内容（XX.jsp  servlet） -->
+  <filter-mapping>
+    <filter-name>loginAfter</filter-name>
+    <url-pattern>/loginAfter/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>loginAfter</filter-name>
+    <filter-class>com.briup.web.filter.LoginAfterFilter</filter-class>
+  </filter>
+  <!-- 配置一个监听器 监听服务器的开启与关闭 -->
+  <listener>
+    <listener-class>com.briup.web.listener.ShopListener</listener-class>
+  </listener>
+  
+ <!--  注册的路径已经配置成功     拦截到该路径后提交到后台的一个servlet类 -->
+ <servlet-mapping>
+   <servlet-name>register</servlet-name>
+   <url-pattern>/registerServlet</url-pattern>
+ </servlet-mapping>
+ <servlet>
+   <servlet-name>register</servlet-name>
+   <servlet-class>com.briup.web.servlet.RegisterServlet</servlet-class>
+ </servlet>
+<!--  配置登录的servlet -->
+<servlet-mapping>
+  <servlet-name>login</servlet-name>
+  <url-pattern>/loginServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>login</servlet-name>
+  <servlet-class>com.briup.web.servlet.LoginServlet</servlet-class>
+</servlet>
+<!-- 查看书本的详细信息配置 -->
+<servlet-mapping>
+  <servlet-name>showBookView</servlet-name>
+  <url-pattern>/viewBookServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>showBookView</servlet-name>
+  <servlet-class>com.briup.web.servlet.ShowViewBook</servlet-class>
+</servlet>
+<!-- 配置添加购物车的操作 -->
+<servlet-mapping>
+  <servlet-name>addToCart</servlet-name>
+  <url-pattern>/loginAfter/addToCartServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>addToCart</servlet-name>
+  <servlet-class>com.briup.web.servlet.AddToCart</servlet-class>
+</servlet>
+<!-- 删除购物车的信息 -->
+<servlet-mapping>
+  <servlet-name>dropLine</servlet-name>
+  <url-pattern>/loginAfter/dropLineServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>dropLine</servlet-name>
+ <servlet-class>com.briup.web.servlet.DropFromCart</servlet-class>
+</servlet>
+<!-- 提交订单 -->
+<servlet-mapping>
+  <servlet-name>confirm</servlet-name>
+  <url-pattern>/loginAfter/confirmServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>confirm</servlet-name>
+  <servlet-class>com.briup.web.servlet.ConfirmServlet</servlet-class>
+</servlet>
+</web-app>
