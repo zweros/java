@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:noNamespaceSchemaLocation="{person.xsd}">
+	<person id="1001">
+		<id>1001</id>
+		<name>高淇</name>
+		<age>18</age>
+		<salary>30000</salary>
+		<complement>5000</complement>		
+	</person>
+	<person id="1002">
+		<id>1002</id>
+		<name>高小二</name>
+		<age>19</age>
+		<salary>35000</salary>
+		<complement>3000</complement>		
+	</person>
+	<person id="1003">
+		<id>1003</id>
+		<name>高小松</name>
+		<age>20</age>
+		<salary>200000</salary>
+		<complement>2000</complement>		
+	</person>
+</persons>
