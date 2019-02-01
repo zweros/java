@@ -2,7 +2,7 @@
 手写 LinkedList，并实现 add 、remove 、get 方法
 
 ### 项目代码
-```
+```java
 package cn.szxy;
 
 import java.util.AbstractSequentialList;
